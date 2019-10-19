@@ -1,0 +1,26 @@
+.portfolio {
+  font-family: "Arial", sans-serif;
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .education {
+    &__collapse {
+      &::after {
+        content: "open";
+        color: black;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+      }
+    }
+    .active::after {
+      content: "close";
+    }
+    &__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-in;
+    }
+  }
+}
