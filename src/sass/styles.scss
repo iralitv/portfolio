@@ -260,3 +260,51 @@ $color-main-portfolio: teal;
     }
   }
 }
+
+.fixed {
+  @include d-flex();
+  flex-direction: column;
+  width: 150px;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 100;
+  font-size: 2rem;
+  &__wrapper {
+    position: relative;
+  }
+  &__width {
+    &::after {
+      content: "mobile";
+      font-size: 2rem;
+    }
+    &.active{
+      &::after {
+        content: "desctop";
+        font-size: 2rem;
+      }
+    }
+  }
+  &__back,
+  &__width {
+    text-decoration: none;
+    color: $color-text-dark;
+    border: 1px solid $color-text-dark;
+    border-radius: 3px;
+    text-align: center;
+    background: $color-text;
+    padding: $padding-base;
+    margin-top: $padding-base;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.width__wrapper {
+  width: 100%;
+  &.mobile__width {
+    width: 640px;
+    margin: 0 auto;
+  }
+}

@@ -1,5 +1,4 @@
 let slides = document.querySelectorAll('.item');
-console.log(slides);
 let activeItem = 0;
 
 let block = false;
@@ -37,7 +36,6 @@ function nextItem(n){
 }
 
 document.querySelector('.slider__control.left').addEventListener('click', function() {
-  console.log(activeItem);
   if (!block) {
     previousItem(activeItem);
   }
