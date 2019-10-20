@@ -1,0 +1,1661 @@
+@import url('https://fonts.googleapis.com/css?family=Yeseva+One&display=swap');
+
+@font-face {
+  font-family: "FuturaBookC";
+  src: url("../fonts/FuturaBookC.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "FuturaDemiCTT";
+  src: url("../fonts/FuturaDemiCTT.ttf") format("opentype");
+  font-weight: 400;
+}
+
+$color-bg-dark: #131313;
+$color-bg-light: #fefefe;
+$color-bg-white: #fff;
+$color-main: #E3B873;
+$color-text: #ffffff;
+$color-text-dark: #363636;
+$color-grey: rgba(54, 54, 54, 0.5);
+$color-light-grey: #959595;
+$color-grey-2: #959595;
+
+$font-base-size: 14px;
+$font-base-family: 'FuturaDemiCTT';
+
+$padding-base: 10px;
+$margin-base: 10px;
+
+$width-desktop: 1440px;
+$width-laptop: 1024px;
+$width-tablet: 768px;
+$width-mobile-lg: 578px;
+$width-mobile-sm: 425px;
+$width-mobile-xs: 375px;
+
+@mixin d-flex($justify-content: normal, $align-items: normal){
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin heading-text($font-size,  $text-color, $text-padding) {
+  font-size: $font-size;
+  text-transform: uppercase;
+  color: $text-color;
+  padding: $text-padding;
+}
+
+@mixin normal-text($font-size,  $text-color, $text-padding) {
+  font-size: $font-size;
+  font-weight: normal;
+  color: $text-color;
+  padding: $text-padding 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font-base-family;
+}
+
+a {
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid $color-text;
+  border-radius: 3px;
+  @include heading-text(0.9*$font-base-size, $color-text, 1.3*$padding-base 3*$padding-base);
+  background-color: transparent;
+  cursor: pointer;
+  &:hover{
+    box-shadow:
+            1px 1px $color-main,
+            2px 2px $color-main,
+            3px 3px $color-main;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  &--fill {
+    background-color: $color-main;
+    border: 1px solid $color-main;
+    &:hover {
+      box-shadow:
+              1px 1px $color-text,
+              2px 2px $color-text,
+              3px 3px $color-text;
+      -webkit-transform: translateX(-3px);
+      transform: translateX(-3px);
+    }
+  }
+  @media screen and (max-width: $width-laptop){
+    padding: 1*$padding-base 2*$padding-base;
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    font-size: $font-base-size;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  .header & {
+    @include d-flex(space-around);
+    padding: 2.5*$padding-base 0;
+    @media screen and (max-width: $width-mobile-lg){
+      padding: 0;
+    }
+  }
+  .completedProject & {
+    @include d-flex(normal, center);
+  }
+  .videoControl & {
+    @include d-flex(center, center);
+    flex-direction: column;
+  }
+  .repair & {
+    @include d-flex(center, center);
+    flex-direction: column;
+  }
+  .measure & {
+    @include  d-flex(space-between, center);
+  }
+  .architecture & {
+    @include d-flex(space-between, center);
+    background: url(../images/repair/realize_bg.png) 100% 100% no-repeat;
+    max-height: 850px;
+  }
+  .goal & {
+    @include d-flex(space-around, flex-start);
+  }
+  .contact & {
+    @include d-flex(center, normal);
+    flex-direction: column;
+  }
+  .repair__footer & {
+    @include d-flex(space-around);
+    padding: 2.5*$padding-base 0;
+  }
+}
+
+.header {
+  background: $color-bg-dark;
+}
+
+.logo {
+  @include d-flex(center, center);
+  padding: $padding-base;
+  &__title {
+    @include heading-text($font-base-size, $color-main, 0);
+    white-space: nowrap;
+  }
+  @media screen and (max-width: $width-mobile-xs){
+    &__title {
+      font-size: 0.85*$font-base-size;
+    }
+  }
+}
+
+.menu{
+  @include d-flex(center, center);
+  &__list {
+    @include d-flex(space-around, center);
+  }
+  &__item {
+    list-style-type: none;
+  }
+  &__link {
+    @include heading-text($font-base-size, $color-text, 1.5*$padding-base 2*$padding-base);
+    text-decoration: none;
+    &--active,
+    &:hover{
+      color: $color-main;
+    }
+  }
+  @media screen and (max-width: $width-desktop){
+    &__link {
+      padding: 1.5*$padding-base;
+    }
+  }
+  @media screen and (max-width: $width-laptop){
+    display: none;
+  }
+}
+
+.phone {
+  @include d-flex(center, center);
+  flex-wrap: wrap;
+  padding: $padding-base;
+  &__number {
+    @include heading-text($font-base-size, $color-main, 1.5*$padding-base);
+    padding-left: 0;
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    &__button {
+      display: none;
+    }
+  }
+  @media screen and (max-width: $width-mobile-xs){
+    &__number {
+      @include heading-text(0.85*$font-base-size, $color-text, 1.5*$padding-base);
+      text-decoration: none;
+    }
+  }
+}
+
+.pasteboard{
+  background-color: $color-bg-dark;
+  .container {
+    height: 100%;
+    @include d-flex();
+  }
+  &__share {
+    width: 5%;
+    @include d-flex(center, center);
+    & .share__title {
+      position: relative;
+      text-decoration: none;
+      @include heading-text($font-base-size, $color-main, $padding-base);
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      &::after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        right: -50px;
+        display: block;
+        min-width: 50px;
+        height: 2px;
+        background: $color-main;
+      }
+    }
+  }
+  &__desc {
+    width: 95%;
+    padding: 20*$padding-base 0 20*$padding-base 6*$padding-base;
+    background: url(../images/repair/poster.png) no-repeat;
+  }
+  &__title {
+    font-family: "Yeseva One", serif;
+    @include heading-text(2.875*$font-base-size, $color-text, 0);
+    font-weight: lighter;
+    &--city {
+      font-family: inherit;
+      color: $color-main;
+    }
+  }
+  &__subtitle {
+    @include normal-text(1.5*$font-base-size, $color-text, 2*$padding-base 0 4.5*$padding-base);
+    max-width: 500px;
+    line-height: 1.5;
+  }
+  &__wrapper {
+    @include d-flex();
+  }
+  &__btn {
+    width: 207px;
+    padding: 2*$padding-base 0;
+    &:first-child {
+      margin-right: $margin-base;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    &__share {
+      width: 15%;
+    }
+    &__desc {
+      width: 85%;
+      padding: 15*$padding-base $padding-base 8*$padding-base;
+    }
+    &__title {
+      @include heading-text(2.5*$font-base-size, $color-text, 0);
+    }
+    &__wrapper {
+      flex-direction: column;
+    }
+    &__btn {
+      width: 100%;
+      flex: 1;
+      margin: 2*$padding-base 0;
+    }
+  }
+  @media screen and (max-width: $width-mobile-sm){
+    &__share {
+      display: none;
+    }
+    &__desc {
+      width: 100%;
+      padding: 10*$padding-base $padding-base 8*$padding-base;
+    }
+    &__title {
+      @include heading-text(1.625*$font-base-size, $color-text, 0);
+      line-height: 132%;
+    }
+    &__subtitle {
+      @include normal-text(1.25*$font-base-size, $color-text, 2*$padding-base 0 3*$padding-base);
+    }
+  }
+}
+
+.completedProject {
+  background: $color-bg-dark;
+  padding-top: 10*$padding-base;
+  &__desc {
+    flex: 3;
+    padding: 0 5*$padding-base 10*$padding-base 10*$padding-base;
+  }
+  .hidden {
+    display: none;
+  }
+  &__photo {
+    flex: 5;
+  }
+  @media screen and (max-width: $width-laptop){
+    padding-top: 0;
+    &__desc {
+      padding: 0 5*$padding-base 5*$padding-base 5*$padding-base;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    .container{
+      flex-direction: column;
+    }
+    &__desc {
+      flex: 3;
+      padding: 2*$padding-base 5*$padding-base 5*$padding-base;
+    }
+    .hidden {
+      display: block;
+    }
+    .display {
+      display: none;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    .hidden {
+      padding: 0 20px;
+    }
+  }
+  @media screen and (max-width: $width-mobile-sm){
+    &__desc {
+      flex: 3;
+      padding: 2*$padding-base;
+    }
+  }
+}
+
+.projectInfo {
+  @include d-flex();
+  flex-direction: column;
+  &__suptitle {
+    @include normal-text($font-base-size, $color-text, 0);
+    text-transform: uppercase;
+  }
+  &__title {
+    position: relative;
+    max-width: 250px;
+    @include heading-text($font-base-size*2, $color-main, 0);
+    font-weight: normal;
+    font-family: "Yeseva One", serif;
+    padding-top: 6*$padding-base;
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: 15px;
+      right: -15px;
+      display: block;
+      height: 2px;
+      width: 90px;
+      background-color: $color-main;
+    }
+  }
+  &__desc {
+    @include normal-text(1.25*$font-base-size, $color-text, 3*$padding-base 0 4*$padding-base);
+    line-height: 1.75;
+    font-family: FuturaBookC, sans-serif;
+  }
+  &__general {
+    width: 80%;
+  }
+  @media screen and (max-width: $width-laptop){
+    &__title {
+      &::after {
+        width: 50px;
+      }
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    &__title {
+      text-align: center;
+      margin: 0 auto;
+      &::after {
+        display: none;
+      }
+    }
+    &__desc {
+      text-align: center;
+    }
+    &__general {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: $width-mobile-xs){
+    &__title {
+      font-size: 1.5*$font-base-size;
+      line-height: 138%;
+      padding-top: 2*$padding-base;
+    }
+    &__desc {
+      font-size: $font-base-size;
+    }
+  }
+}
+
+.houseDetails {
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20% 10%;
+  padding-bottom: 4*$padding-base;
+  &__item {
+    @include d-flex();
+    flex-direction: column;
+  }
+  &__title {
+    @include heading-text(1.3*$font-base-size, $color-main, $padding-base 0);
+    font-family: "Yeseva One", serif;
+    font-weight: normal;
+  }
+  &__info {
+    @include normal-text($font-base-size, $color-text, 0);
+    line-height: 1.3;
+    padding-right: 3*$padding-base;
+    font-family: FuturaBookC, sans-serif;
+  }
+}
+
+.projectCarousel {
+  @include d-flex();
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  &__titles {
+    @include d-flex();
+    padding-bottom: 2*$padding-base;
+  }
+  &__title {
+    @include heading-text($font-base-size, $color-main, $padding-base 2*$padding-base);
+    font-family: "Yeseva One", serif;
+    font-weight: normal;
+    &--active,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media screen and (max-width: $width-laptop){
+    &__title {
+      font-size: 0.9*$font-base-size;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    &__titles {
+      display: none;
+    }
+  }
+}
+
+.gallery {
+  @include d-flex();
+  flex-wrap: nowrap;
+  overflow: hidden;
+  position: relative;
+
+  &__item {
+    height: auto;
+    width: 100%;
+    max-width: 720px;
+    object-fit: cover;
+  }
+  &__btn {
+    position: absolute;
+    top: 40%;
+    @include d-flex(center, center);
+    width: 55px;
+    height: 55px;
+    border: 0;
+    border-radius: 50%;
+    background: $color-main;
+    & .fa {
+      color: $color-text;
+      font-size: 1.5*$font-base-size;
+    }
+    &--right {
+      right: 30px;
+    }
+    &--left {
+      display: none;
+      left: 30px;
+    }
+    &:hover {
+      -webkit-box-shadow: 0 0 5px 0 rgba(231,166,26,1);
+      -moz-box-shadow: 0 0 5px 0 rgba(231,166,26,1);
+      box-shadow: 0 0 5px 0 rgba(231,166,26,1);
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width: $width-tablet){
+    &__btn {
+      width: 40px;
+      height: 40px;
+      &--left {
+        display: block;
+      }
+    }
+  }
+}
+
+.goal,
+.projectInfo{
+  position: relative;
+  .controls {
+    @include d-flex(center, center);
+    width: auto;
+    height: auto;
+    &__arrow {
+      font-size: 1.8*$font-base-size;
+      border: 0;
+      color: $color-text;
+      background: transparent;
+      &:hover {
+        color: $color-main;
+        cursor: pointer;
+      }
+    }
+    &__dots {
+      @include d-flex(center, center);
+    }
+    &__dot {
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: $color-text;
+      margin: $padding-base;
+      &:hover {
+        background-color: $color-main;
+        cursor: pointer;
+      }
+    }
+    @media screen and (max-width: $width-mobile-lg){
+      display: none;
+    }
+  }
+}
+
+
+
+.heading {
+  @include d-flex(center, center);
+  flex-direction: column;
+  padding: 3*$padding-base 0;
+  &__title {
+    @include heading-text(1.5*$font-base-size, $color-text, $padding-base);
+    font-family: "Yeseva One", serif;
+    font-weight: normal;
+  }
+  &__icon {
+    @include normal-text(1.5*$font-base-size, $color-main, 0);
+  }
+  &__wrapper {
+    position: relative;
+    &::before,
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 40%;
+      right: 30px;
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: $color-main;
+    }
+    &::after {
+      left: 30px;
+    }
+  }
+  &__subtitle {
+    @include normal-text(1.25*$font-base-size, $color-text-dark, 2*$padding-base 0 3*$padding-base);
+    font-family: "FuturaBookC", sans-serif;
+    text-align: center;
+  }
+}
+
+.videoControl {
+  background: -webkit-linear-gradient($color-bg-dark 30%, $color-bg-light 30%, $color-bg-light 100%);
+  background:    -moz-linear-gradient($color-bg-dark 30%, $color-bg-light 30%, $color-bg-light 100%);
+  background: linear-gradient($color-bg-dark 30%, $color-bg-light 30%, $color-bg-light 100%);
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 820px;
+  }
+  &__controls {
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    top: 40%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    @include d-flex(center, center);
+    border-radius: 50%;
+    background-color: $color-main;
+    .fa {
+      @include normal-text(2*$font-base-size, $color-text, 0);
+    }
+  }
+  &__video {
+    &[poster]{
+      object-fit: cover;
+    }
+  }
+  .form {
+    position: relative;
+    flex-direction: row;
+    padding-bottom: 13*$padding-base;
+    &__item--check {
+      position: absolute;
+      top: 100px;
+    }
+  }
+  @media screen and (max-width: $width-tablet){
+    &__form {
+      padding-bottom: 5*$padding-base;
+    }
+    &__wrapper {
+      width: 90%;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    background: -webkit-linear-gradient($color-bg-dark 95%, $color-bg-light 95%, $color-bg-light 100%);
+    background:    -moz-linear-gradient($color-bg-dark 95%, $color-bg-light 95%, $color-bg-light 100%);
+    background: linear-gradient($color-bg-dark 95%, $color-bg-light 95%, $color-bg-light 100%);
+    .form {
+      width: 90%;
+      flex-direction: column;
+      align-items: start;
+      padding-bottom: $padding-base;
+      margin: 0 auto;
+      &__item {
+        width: 100%;
+        margin: 20px 0;
+        &--check {
+          width: auto;
+        }
+      }
+      &__item--check {
+        position: relative;
+        top: 0;
+      }
+      &__label {
+        color: $color-grey-2;
+        &--check {
+          color: $color-text;
+        }
+      }
+      &__input {
+        &::placeholder {
+          color: $color-text;
+        }
+        &::-moz-placeholder {
+          color: $color-text;
+        }
+        &::-webkit-input-placeholder {
+          color: $color-text;
+        }
+      }
+    }
+    &__controls {
+      width: 37px;
+      height: 37px;
+      position: absolute;
+      top: 40%;
+      .fa {
+        @include normal-text($font-base-size, $color-text, 0);
+      }
+    }
+  }
+  @media screen and (max-width: $width-mobile-sm){
+    background: -webkit-linear-gradient($color-bg-dark 93%, $color-bg-light 93%, $color-bg-light 100%);
+    background:    -moz-linear-gradient($color-bg-dark 93%, $color-bg-light 93%, $color-bg-light 100%);
+    background: linear-gradient($color-bg-dark 93%, $color-bg-light 93%, $color-bg-light 100%);
+
+  }
+}
+
+.form {
+  @include d-flex(center, center);
+  flex-direction: column;
+  font-family: "FuturaBookC", sans-serif;
+  &__legend {
+    @include normal-text(1.5*$font-base-size, $color-text, 2*$padding-base);
+    max-width: 280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__fieldset {
+    border: 0;
+  }
+  &__item {
+    @include d-flex(center, normal);
+    flex-direction: column;
+    margin: 20px;
+    &--check {
+      flex-direction: row;
+      position: relative;
+    }
+  }
+  &__input {
+    @include normal-text(1.25*$font-base-size, $color-text-dark, 0.8*$padding-base 0 0.8*$padding-base);
+    border: 0;
+    border-bottom: 1px solid $color-grey;
+    outline: none;
+    background: transparent;
+    &:focus {
+      border-bottom: 1px solid $color-main;
+    }
+    &::placeholder {
+      color: $color-text-dark;
+    }
+    &::-moz-placeholder {
+      color: $color-text-dark;
+    }
+    &::-webkit-input-placeholder {
+      color: $color-text-dark;
+    }
+  }
+  &__label {
+    @include normal-text($font-base-size, $color-grey, 0);
+    font-family: "FuturaBookC",sans-serif;
+    &--check {
+      @include normal-text(1.125*$font-base-size, $color-text-dark, 0);
+      position: relative;
+      padding-left: 30px;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__check{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -3px;
+    left: -10px;
+    background-color: transparent;
+    border-radius: 3px;
+    border: 2px solid $color-main;
+    &::after {
+      position: absolute;
+      content: " ";
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      left: 5px;
+      top: 0;
+      width: 6px;
+      height: 12px;
+      border: solid $color-text;
+      border-width: 0 2px 2px 0;
+      background-color: transparent;
+      border-radius: 0;
+      opacity: 0;
+    }
+  }
+  input[type="checkbox"]{
+    display: none;
+    &:checked ~ .form__check{
+      background-color: $color-main;
+    }
+    &:checked ~ .form__check::after{
+      opacity: 1;
+    }
+  }
+  &__submit {
+    padding: 2*$padding-base 7.5*$padding-base;
+  }
+
+  @media screen and (max-width: $width-laptop){
+    &__label {
+      &--check {
+        font-size: $font-base-size;
+      }
+    }
+  }
+}
+
+.repair {
+  background-color: $color-bg-light;
+  &__header {
+    & .heading__title {
+      color: $color-text-dark
+    }
+  }
+}
+
+.project {
+  width: 90%;
+  margin: 0 auto;
+  @include d-flex(space-around, normal);
+  padding-bottom: 30*$padding-base;
+  @media screen and (max-width: $width-mobile-lg){
+    flex-direction: column;
+    padding-bottom: $padding-base;
+  }
+}
+
+.projectCard {
+  @include d-flex();
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  margin: 0 2*$padding-base;
+  &__skill {
+    position: absolute;
+    top: -35px;
+    left: -35px;
+    width: 70px;
+    height: 70px;
+    background-color: $color-main;
+    @include d-flex(center, center);
+  }
+  &__icon.fa {
+    @include normal-text(2*$font-base-size, $color-text, 0);
+  }
+  &__subtitle {
+    @include normal-text(1.25*$font-base-size, $color-grey, 0);
+    font-family: "FuturaBookC", sans-serif;
+  }
+  &__img {
+    width: 100%;
+    height: auto;
+    background: $color-text-dark;
+  }
+  &__desc {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70%;
+    margin: auto;
+    max-width: 60%;
+    background-color: $color-bg-white;
+    padding: 2.5*$padding-base 3.5*$padding-base 5*$padding-base;
+    -webkit-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+    -moz-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+  }
+  &__title {
+    @include heading-text(1.25*$font-base-size, $color-text-dark, $padding-base 0);
+    font-family: "Yeseva One", serif;
+    text-transform: capitalize;
+    font-weight: normal;
+  }
+  &__list {
+    @include normal-text($font-base-size, $color-grey, 0);
+    font-family: "FuturaBookC", sans-serif;
+    line-height: 1.75;
+    margin-left: 1.5*$padding-base;
+  }
+  &__btn {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    @include heading-text(1.25*$font-base-size, $color-text, 1.5*$padding-base 2*$padding-base);
+    border-radius: 0;
+    font-family: "Yeseva One", serif;
+    font-weight: normal;
+  }
+  @media screen and (max-width: $width-laptop){
+    &__desc {
+      max-width: 100%;
+      padding: 1.5*$padding-base 1.5*$padding-base 3*$padding-base;
+    }
+    &__btn {
+      @include heading-text($font-base-size, $color-text, 1*$padding-base 2*$padding-base);
+    }
+    &__skill {
+      top: -25px;
+      left: -25px;
+      width: 50px;
+      height: 50px;
+    }
+  }
+  @media screen and (max-width: $width-tablet){
+    &__btn {
+      @include heading-text(0.9*$font-base-size, $color-text, 1*$padding-base 2*$padding-base);
+    }
+    &__item {
+      &--remove {
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    margin-bottom: 20*$padding-base;
+    &__desc {
+      max-width: 70%;
+      top: 60%;
+      left: 0;
+      margin: 0;
+    }
+    &__skill {
+      top: -35px;
+      left: -35px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+}
+
+.measure {
+  position: relative;
+  margin-bottom: 200px;
+  &__figure {
+    position: relative;
+    @include d-flex(normal, center);
+    width: 60%;
+    height: 800px;
+    background: url(../images/repair/measure.png) no-repeat;
+  }
+  &__border {
+    width: 70%;
+    height: 75%;
+    position: relative;
+    //border: 3px solid $color-main;
+    border-radius: 50%;
+    background-clip: padding-box;
+    border: solid 3px transparent;
+    background: $color-bg-light;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -7px;
+      border-radius: inherit;
+      background: linear-gradient(to right, transparent, orange);
+    }
+  }
+  &__stages {
+    height: 75%;
+    position: absolute;
+    left: 65%;
+    top: 20%;
+  }
+  &__stage {
+    height: 25%;
+    position: relative;
+    @include normal-text(1.125*$font-base-size, $color-text-dark, 0);
+    font-family: "FuturaMediumC", sans-serif;
+    list-style-type: none;
+    &:nth-child(2),
+    &:nth-child(3){
+      left: 30%;
+    }
+    &::before {
+      content: " ";
+      position: absolute;
+      left: -80px;
+      top: -20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 10px solid $color-text;
+      background-color: $color-main;
+    }
+  }
+  &__number {
+    position: absolute;
+    top: 0;
+    left: -60px;
+    @include normal-text(1.25*$font-base-size,$color-text, 0);
+    font-family: "Yeseva One", serif;
+  }
+  &__form {
+    background: $color-bg-dark;
+    padding: 3*$padding-base 5*$padding-base;
+    margin: 0 auto;
+    .form__label {
+      color: $color-light-grey;
+    }
+    .form__input::-moz-placeholder {
+      color: $color-text;
+    }
+    .form__input::-webkit-input-placeholder {
+      color: $color-text;
+    }
+    .form__input::placeholder,
+    .form__label--check {
+      color: $color-text;
+    }
+    .form__item--btn {
+      @include d-flex(flex-end, flex-end);
+      padding-top: $padding-base;
+      .btn {
+        padding: 2*$padding-base 3*$padding-base;
+      }
+    }
+  }
+  &__bonus {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+  }
+
+  @media screen and (max-width: $width-laptop){
+    margin-bottom: 0;
+    &__figure {
+      background: url(../images/repair/measure.png) 100% 100% no-repeat;
+    }
+    &__form {
+      padding: 2*$padding-base 3*$padding-base;
+    }
+    &__border {
+      display: none;
+    }
+    &__stages {
+      left: 40%;
+      padding-left: 2*$padding-base;
+    }
+    &__stage {
+      font-weight: 600;
+      &::before {
+        -webkit-box-shadow: 0 0 10px 10px rgba(255,255,255,1);
+        -moz-box-shadow: 0 0 10px 10px rgba(255,255,255,1);
+        box-shadow: 0 0 10px 10px rgba(255,255,255,1);
+      }
+    }
+    &__bonus {
+      right: 5%;
+    }
+  }
+  @media screen and (max-width: $width-tablet){
+
+    &__stages {
+      left: 20%;
+      padding-left: 2*$padding-base;
+    }
+    &__stage {
+      font-weight: 600;
+      &:nth-child(2),
+      &:nth-child(3){
+        left: 0;
+      }
+    }
+    &__form {
+      .form__input::placeholder,
+      .form__label--check {
+        font-size: 0.9*$font-base-size;
+      }
+      .form__item--btn {
+        @include d-flex(center, center);
+      }
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    display: none;
+  }
+}
+
+.bonus {
+  @include d-flex(center, center);
+  &__icon {
+    @include d-flex(center, center);
+    width: 72px;
+    height: 72px;
+    background: $color-main;
+    border-radius: 50%;
+    .fa {
+      @include normal-text(3*$font-base-size, $color-text, 0);
+    }
+  }
+  &__text {
+    @include normal-text(1.25*$font-base-size, $color-main, 0 2*$padding-base);
+    font-family: "FuturaDemiC", sans-serif;
+    line-height: 1.25;
+  }
+}
+
+.architecture {
+  background: $color-bg-dark;
+  margin: 100px 0;
+  &__type {
+    flex: 1;
+    padding: 14*$padding-base 10*$padding-base 10*$padding-base 10*$padding-base;
+  }
+  &__gallery {
+    flex: 2;
+    background: transparent;
+  }
+  @media screen and (max-width: $width-laptop){
+    margin: 0;
+  }
+  @media screen and (max-width: $width-tablet){
+    &__type {
+      padding: 5*$padding-base;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    .container {
+      flex-direction: column;
+      background: -webkit-linear-gradient($color-bg-light 70%, $color-bg-dark 70%, $color-bg-dark 100%);
+      background:    -moz-linear-gradient($color-bg-light 70%, $color-bg-dark 70%, $color-bg-dark 100%);
+      background: linear-gradient($color-bg-light 70%, $color-bg-dark 70%, $color-bg-dark 100%);
+    }
+    &__gallery {
+      width: 90%;
+      margin: 0 auto;
+      flex: 2;
+      background: transparent;
+    }
+  }
+}
+
+.type {
+  @include d-flex();
+  flex-direction: column;
+  &__title {
+    @include heading-text(2*$font-base-size, $color-main, 0 0 4*$padding-base);
+    font-family: "Yeseva One", serif;
+    font-weight: normal;
+  }
+  &__list {
+
+  }
+  &__item {
+    padding-bottom: 2.5*$padding-base;
+    list-style-type: none;
+  }
+  &__link {
+    @include normal-text(1.5*$font-base-size, $color-text, 0 0 0.2*$padding-base);
+    text-decoration: none;
+    opacity: 0.9;
+    &--active {
+      color: $color-main;
+      border-bottom: 1px solid $color-main;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    &__list {
+      display: none;
+    }
+    &__title {
+      text-align: center;
+      padding: 0;
+    }
+  }
+}
+
+.archGallery {
+  position: relative;
+  top: 200px;
+  left: 0;
+  height: 100%;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-rows: 5% 18% 10% 7% 20% 5%;
+  grid-template-columns: repeat(2, 1fr);
+  &__img {
+    width: 100%;
+    height: auto;
+    &--hidden {
+      display: none;
+    }
+  }
+  &__img:nth-child(1) {
+    grid-column: 1/2;
+    grid-row: 2/4;
+  }
+  &__img:nth-child(2) {
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+  &__img:nth-child(3) {
+    grid-column: 1/2;
+    grid-row: 5/6;
+  }
+  &__img:nth-child(4) {
+    grid-column: 2/3;
+    grid-row: 3/5;
+  }
+  @media screen and (max-width: $width-laptop){
+    top: 100px;
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    top: 0;
+    grid-gap: 40px;
+    grid-template-rows: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    &__img {
+      width: 100%;
+      height: auto;
+    }
+    &__img:nth-child(n) {
+      display: none;
+    }
+    &__img:last-child {
+      display: block;
+      grid-column: 1/3;
+      grid-row: 1/2;
+      background-image: url(../images/repair/realize_mobile.png);
+    }
+  }
+}
+
+.design {
+  background: -webkit-linear-gradient($color-bg-light 50%, $color-bg-dark 50%, $color-bg-dark 100%);
+  background:    -moz-linear-gradient($color-bg-light 50%, $color-bg-dark 50%, $color-bg-dark 100%);
+  background: linear-gradient($color-bg-light 50%, $color-bg-dark 50%, $color-bg-dark 100%);
+  &__header .heading__title {
+    color: $color-text-dark;
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    background: $color-bg-dark;
+    padding-top: 3*$padding-base;
+    &__header .heading__title {
+      color: $color-text;
+    }
+    &__header .heading__subtitle {
+      color: $color-text;
+      padding: 3*$padding-base 5*$padding-base 2*$padding-base;
+    }
+  }
+  @media screen and (max-width: $width-mobile-sm){
+    &__header .heading__subtitle {
+      padding: 3*$padding-base;
+      font-size: 1.05*$font-base-size;
+    }
+  }
+}
+
+.goal {
+  background: $color-bg-dark;
+  &__carousel {
+    flex: 1;
+    padding: 0 5*$padding-base 10*$padding-base 10*$padding-base;
+    .projectInfo__title {
+      padding-top: 2*$padding-base;
+    }
+  }
+  &__stages {
+    flex: 3;
+  }
+  @media screen and (max-width: $width-tablet){
+    &__carousel {
+      padding: 5*$padding-base;
+    }
+  }
+  @media screen and (max-width: $width-tablet){
+    display: none;
+  }
+}
+
+.step {
+  @include d-flex();
+  flex-direction: column;
+  &__number {
+    @include heading-text(1.25*$font-base-size, $color-text, 0 0 2*$padding-base);
+    font-family: "Yeseva One", serif;
+  }
+  &__title {
+    @include heading-text($font-base-size, $color-main, 0 0 1.5*$padding-base);
+    font-family: "Yeseva One", serif;
+    max-width: 230px;
+  }
+  &__desc {
+    @include normal-text($font-base-size, $color-text, 0);
+    font-family: "FuturaBookC", sans-serif;
+  }
+}
+
+.stage {
+  @include d-flex();
+  flex-direction: column;
+  padding: 6*$padding-base 2*$padding-base;
+  &__wrapper {
+    flex: 1;
+  }
+  &__list {
+    @include d-flex();
+    flex-wrap: wrap;
+  }
+  &__link {
+    @include normal-text($font-base-size, $color-light-grey, 0 0 3*$padding-base);
+    display: block;
+    max-width: 125px;
+    text-decoration: none;
+    &--active,
+    &:hover {
+      color: $color-text;
+    }
+  }
+  &__number {
+    font-family: "Yeseva One", serif;
+    border-bottom: 1px solid $color-main;
+    padding-bottom: 2px;
+  }
+  &__title {
+    font-size: $font-base-size;
+    font-family: "FuturaBookC", sans-serif;
+    font-weight: 400;
+    padding-top: 1.5*$padding-base;
+  }
+  &__item {
+    width: 33%;
+    list-style-type: none;
+  }
+  &__img {
+    flex: 2;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.team {
+  background: -webkit-linear-gradient($color-bg-dark 40%, $color-bg-light 40%, $color-bg-light 100%);
+  background:    -moz-linear-gradient($color-bg-dark 40%, $color-bg-light 40%, $color-bg-light 100%);
+  background: linear-gradient($color-bg-dark 40%, $color-bg-light 40%, $color-bg-light 100%);
+  &__header .heading__subtitle {
+    color: $color-text;
+  }
+  &__wrapper {
+    width: 90%;
+    margin: 0 auto;
+    @include d-flex(space-around, normal);
+    padding-bottom: 15*$padding-base;
+  }
+  .projectCard {
+    margin: 0 50px;
+    &__title,
+    &__subtitle {
+      text-align: center;
+    }
+    &__btn {
+      width: 100%;
+      font-size: 0.9*$font-base-size;
+    }
+  }
+  @media screen and (max-width: $width-laptop){
+    &__wrapper {
+      padding-bottom: 7*$padding-base;
+    }
+    .projectCard {
+      margin: 0 20px;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    background: $color-bg-dark;
+    &__wrapper {
+      width: 100%;
+      flex-direction: column;
+    }
+    .projectCard {
+      margin: 50px;
+      &__desc {
+        margin: 0 auto;
+        top: 80%;
+      }
+      &__btn {
+        width: 100%;
+        font-size: 0.9*$font-base-size;
+      }
+    }
+    .divide__desc {
+      display: none;
+    }
+  }
+  @media screen and (max-width: $width-mobile-sm){
+    &__header .heading__subtitle {
+      font-size: 1.05*$font-base-size;
+      line-height: 135%;
+    }
+  }
+}
+
+.divide__desc {
+  @include d-flex(center, center);
+  flex-direction: column;
+  max-width: 680px;
+  margin: 0 auto;
+  @include normal-text(1.375*$font-base-size, $color-text-dark, 3*$padding-base 0 9*$padding-base);
+  font-family: "FuturaBookC", sans-serif;
+  line-height: 1.75;
+  text-align: center;
+  @media screen and (max-width: $width-mobile-lg){
+    @include normal-text($font-base-size, $color-text, 3*$padding-base 0 9*$padding-base);
+    padding: $padding-base;
+  }
+}
+
+.main-divider {
+  width: 55px;
+  height: 2px;
+  border: 0;
+  background-color: $color-main;
+  margin: 2*$padding-base 0;
+}
+
+.clients {
+  background: $color-bg-light;
+  &__header .heading__title {
+    color: $color-text-dark;
+  }
+  &__wrapper {
+    @include d-flex();
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    display: none;
+  }
+}
+
+.client {
+  position: relative;
+  max-width: 30%;
+  flex: 1;
+  margin: $padding-base;
+  -webkit-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+  -moz-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+  &__profile {
+    @include d-flex(normal, center);
+  }
+  &__img {
+    border-radius: 50%;
+    padding: $padding-base;
+  }
+  &__name {
+    @include heading-text(1.25*$font-base-size, $color-text-dark, 0 2*$padding-base);
+    font-family: "Yeseva One", serif;
+    text-transform: capitalize;
+  }
+  &__comment {
+    @include normal-text($font-base-size, $color-light-grey, 2*$padding-base $padding-base 3*$padding-base);
+    line-height: 1.8;
+    font-family: "FuturaBookC", sans-serif;
+  }
+  &__order {
+    width: 70%;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    @include d-flex(space-around);
+  }
+  &__size {
+    flex: 1;
+    background: $color-main;
+    border-left: 1px solid $color-text;
+  }
+  @media screen and (max-width: $width-laptop){
+    margin: 0 auto;
+    &__order {
+      width: 100%;
+    }
+    &__profile {
+      flex-direction: column;
+    }
+    &__comment {
+      padding: 2*$padding-base 2*$padding-base 3*$padding-base;
+    }
+  }
+  @media screen and (max-width: $width-tablet){
+    &__profile {
+      padding-bottom: 3*$padding-base;
+    }
+    &__comment {
+      display: none;
+    }
+  }
+}
+
+.size {
+  @include d-flex(center, center);
+  &__icon.fa {
+    @include heading-text(2*$font-base-size, $color-text, $padding-base);
+  }
+  &__text {
+    @include heading-text(1.125*$font-base-size, $color-text, 0);
+    font-family: "Yeseva One", serif;
+  }
+  @media screen and (max-width: $width-laptop){
+    @include d-flex(normal, center);
+    &__icon.fa {
+      font-size: $font-base-size;
+    }
+    &__text {
+      font-size: 0.9*$font-base-size;
+    }
+  }
+}
+
+.question {
+  background: -webkit-linear-gradient($color-bg-light 50%, $color-bg-dark 50%, $color-bg-dark 100%);
+  background:    -moz-linear-gradient($color-bg-light 50%, $color-bg-dark 50%, $color-bg-dark 100%);
+  background: linear-gradient($color-bg-light 50%, $color-bg-dark 50%, $color-bg-dark 100%);
+  padding: 5*$padding-base 0;
+  &__wrapper {
+    @include d-flex();
+  }
+  &__form {
+    -webkit-box-shadow: 10px 10px 20px rgba(255, 255, 255, 0.03);
+    -moz-box-shadow: 10px 10px 20px rgba(255, 255, 255, 0.03);
+    box-shadow: 10px 10px 20px rgba(255, 255, 255, 0.03);
+    width: 60%;
+    margin: 0 auto;
+    padding: 3*$padding-base;
+    background: $color-bg-dark;
+    .form__item {
+      &--check{
+        max-width: 330px;
+        margin: 2*$padding-base auto;
+      }
+      &--btn {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+    }
+    .form__legend {
+      font-family: "Yeseva One", serif;
+    }
+    .form__label {
+      color: $color-light-grey;
+      &--check {
+        color: $color-text;
+      }
+    }
+    .form__input {
+      color: $color-text;
+      &:focus {
+        border-bottom: 1px solid $color-main;
+      }
+      &::placeholder {
+        color: $color-text;
+      }
+      &::-moz-placeholder {
+        color: $color-text;
+      }
+      &::-webkit-input-placeholder {
+        color: $color-text;
+      }
+    }
+  }
+  @media screen and (max-width: $width-laptop){
+    &__form {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    background: $color-bg-dark;
+    padding: 0;
+    &__wrapper {
+      width: 100%;
+      flex-direction: column;
+    }
+    .form__fieldset {
+      width: 100%;
+    }
+    &__form {
+      width: 100%;
+      box-shadow: none;
+      padding: 0;
+      .form__item {
+        &--check{
+          margin: 3*$padding-base;
+        }
+        &--btn {
+          max-width: 90%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+.contact {
+  background: $color-bg-dark;
+  padding: 5*$padding-base 0;
+  &__info {
+    @include d-flex(normal, center);
+    flex-direction: column;
+  }
+  &__address {
+    width: 50%;
+    @include heading-text(1.5*$font-base-size, $color-main, 2*$padding-base);
+    font-family: "Yeseva One", serif;
+    text-align: center;
+    &--phone {
+      font-family: inherit;
+    }
+  }
+  &__share {
+    @include d-flex();
+    &--wrapper {
+      @include d-flex(center, center);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: $color-main;
+      margin: $padding-base;
+      opacity: 0.9;
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+    .fa {
+      color: $color-text;
+    }
+  }
+  &__map {
+    max-width: 925px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: $width-tablet){
+    &__address {
+      width: 90%;
+    }
+  }
+  @media screen and (max-width: $width-mobile-lg){
+    .container {
+      flex-direction: column-reverse;
+    }
+    &__address {
+      @include heading-text(1.25*$font-base-size, $color-main, 2*$padding-base);
+      &--phone {
+        display: block;
+      }
+    }
+  }
+}
+
+.repair__footer {
+  background-color: $color-bg-dark;
+  @media screen and (max-width: $width-mobile-lg){
+    display: none;
+  }
+}
