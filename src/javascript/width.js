@@ -1,5 +1,11 @@
 const widthChange = document.getElementsByClassName('fixed__width');
 
+const viewportMeta = document.getElementById('viewport__meta');
+const viewports = {
+  default: viewportMeta.getAttribute('content'),
+  mobile: 'width=640'
+};
+
 for (let i = 0; i < widthChange.length; i++) {
   widthChange[i].addEventListener('click', function() {
     this.classList.toggle('active');
@@ -12,18 +18,12 @@ for (let i = 0; i < widthChange.length; i++) {
   });
 }
 
-const viewportMeta = document.getElementById('viewport__meta');
-const viewports = {
-  default: viewportMeta.getAttribute('content'),
-  mobile: 'width=640'
-};
-
 const widthWrapper = document.querySelectorAll('.width__wrapper');
 
 function resizeWidth(item) {
-  item.forEach(width => {
-    width.classList.toggle('mobile__width');
-  });
+  for(let i = 0; i < item.length; i++) {
+    item[i].classList.toggle('mobile__width');
+  }
   document.querySelector('body').style.background = '#000';
 }
 
