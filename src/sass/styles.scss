@@ -23,4 +23,120 @@
       transition: max-height 0.2s ease-in;
     }
   }
+  .slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-50%);
+    &__control {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 15%;
+      cursor: pointer;
+      &.left {
+        left: 0;
+        right: auto;
+      }
+      &.right {
+        left: auto;
+        right: 0;
+      }
+    }
+    &__arrow {
+      display: inline-block;
+      font-size: 100px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      transform: translateY(-50%);
+    }
+    @media screen and (max-width: 768px){
+      &__control {
+        display: none;
+      }
+    }
+  }
+
+  .item__container{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .item {
+    display: none;
+    max-height: 550px;
+    position: relative;
+    margin: 0 auto;
+    animation: 0.5s ease-in-out;
+    &.slider--active,
+    &.next {
+      display: block;
+    }
+    &.next {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    &__desc {
+      display: flex;
+      justify-content: space-between;
+      font-size: 40px;
+      border: 1px solid black;
+      margin: 20px 20%;
+    }
+    &__text {
+      padding: 10px;
+    }
+    @media screen and (max-width: 1024px){
+      &__desc {
+        flex-direction: column;
+      }
+    }
+    @media screen and (max-width: 768px){
+      &__desc {
+        width: 100%;
+        margin: 20px 0;
+      }
+    }
+  }
+  .to-left {
+    animation-name: slider-left;
+  }
+
+  .to-right {
+    animation-name: slider-right;
+    animation-direction: reverse;
+  }
+
+  .from-left {
+    animation-name: slider-left;
+    animation-direction: reverse;
+  }
+
+  .from-right {
+    animation-name: slider-right;
+  }
+
+  @keyframes slider-left {
+    from {
+      left: 0;
+    }
+    to {
+      left: -100%;
+    }
+  }
+  @keyframes slider-right {
+    from {
+      left: 100%;
+    }
+    to {
+      left: 0;
+    }
+  }
 }

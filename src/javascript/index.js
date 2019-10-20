@@ -1,4 +1,5 @@
 import '../sass/styles.scss';
+import '../javascript/slider.js'
 
 const collapse = document.getElementsByClassName("education__collapse");
 
