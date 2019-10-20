@@ -49,6 +49,21 @@ document.querySelector('.slider__control.right').addEventListener('click', funct
   }
 });
 
+
+function collapsible() {
+  const collapse = document.getElementsByClassName("slider-collapse");
+  Array.from(collapse).forEach(elem => {
+    elem.classList.toggle("active");
+    let content = elem.nextElementSibling;
+    if(content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    }
+  });
+}
+
+
 const Swiper = (element) => {
   let swipeElement = element;
   let startX = 0;
@@ -73,6 +88,9 @@ const Swiper = (element) => {
           previousItem(activeItem);
         }
       }
+    }
+    if(e.target.classList.contains('slider-collapse')) {
+      collapsible();
     }
 
     let touchPoint = e.changedTouches[0];
