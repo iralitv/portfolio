@@ -10,12 +10,18 @@
 <body>
 
 <section class="portfolio">
+<h1 class="portfolio__title">Portfolio</h1>
   <div class="container">
     <section class="profile">
-
+        <img src="src/images/User_icon.png" alt="" class="profile__img">
+        <section class="profile__info">
+           <h2 class="profile__name">Ira Litvinchuk</h2>
+           <a class="profile__link" href="https://github.com/iralitv?tab=repositories">Github: iralitv</a>
+           <a class="profile__link" href="https://teleg.run/IraLitvinchuk">Telegram</a>
+        </section>
     </section>
     <section class="education">
-        <button class="education__collapse" type="button"></button>
+        <button class="education__collapse" type="button">Education</button>
         <section class="education__content">
            <ul class="education__list">
                <li class="education__item">
@@ -49,28 +55,53 @@
            </ul>
         </section>
     </section>
-    <section class="slider">
-      <section class="item__container">
-          <article class="item slider--active">
-            <div class="item__desc">
-                <p class="item__text">the yalow</p>
-                <img src="src/images/project_1.png" alt="" class="item__img">
+    <div class="slider__wrapper">
+        <section class="slider">
+          <section class="item__container">
+              <article class="item slider--active">
+                <div class="item__desc">
+                    <div class="item__text">
+                        <p class="item__title">The yalow: </p>
+                        <ul class="item__list">
+                            <li class="item__part">Media queries</li>
+                            <li class="item__part">Work with video tag</li>
+                            <li class="item__part">Using svg icon</li>
+                        </ul>
+                    </div>
+                    <a class="item__link" href="#">
+                        <img src="src/images/project_theyalow.png" alt="" class="item__img">
+                    </a>
+                </div>
+              </article>
+              <article class="item">
+                <div class="item__desc">
+                    <div class="item__text">
+                        <p class="item__title">Repair Design: </p>
+                        <ul class="item__list">
+                            <li class="item__part">Responsive layout</li>
+                            <li class="item__part">BEM</li>
+                            <li class="item__part">Sass</li>
+                            <li class="item__part">Webpack</li>
+                        </ul>
+                    </div>
+                    <a class="item__link" href="#">
+                        <img src="src/images/project_repair.png" alt="" class="item__img">
+                    </a>
+                </div>
+              </article>
+          </section>
+          <section class="slider__control left">
+            <div class="slider__arrow left">
+                <i class="slider__arrow left fa fa-arrow-circle-left"></i>
             </div>
-          </article>
-          <article class="item">
-            <div class="item__desc">
-                <p class="item__text">repair design</p>
-                <img src="src/images/project_2.png" alt="" class="item__img">
+          </section>
+          <section class="slider__control right">
+            <div class="slider__arrow right">
+                <i class="slider__arrow right fa fa-arrow-circle-right"></i>
             </div>
-          </article>
-      </section>
-      <section class="slider__control left">
-        <div class="slider__arrow left">&lt;</div>
-      </section>
-      <section class="slider__control right">
-        <div class="slider__arrow right">&gt;</div>
-      </section>
-    </section>
+          </section>
+        </section>
+    </div>
   </div>
 </section>
 

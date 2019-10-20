@@ -63,7 +63,7 @@ const Swiper = (element) => {
   let minTime = 200;
 
   swipeElement.addEventListener('touchstart', function(e) {
-    if(e.target.classList.contains('slider__control')) {
+    if(e.target.classList.contains('slider__control') || e.target.classList.contains('slider__arrow')) {
       if(e.target.classList.contains('right')){
         if(!block){
           nextItem(activeItem);
